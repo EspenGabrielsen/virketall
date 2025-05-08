@@ -15,7 +15,7 @@ class virketall:
         self.getConfigFile()
         if self.config:
             self.getFileByname()
-        if  self.choosenFile:
+        if self.choosenFile:
             self.readExcel()
             self.startRow = self.config.get("startrow") or None
             self.columns = self.config.get("columns") or None
@@ -26,7 +26,8 @@ class virketall:
             )
         if self.wb and self.ws:
             self.getValues()
-            print(self.valuesList)
+            self.writeToCSV()
+
     def getConfigFile(self):
         try:
             with open("./config.json", encoding="utf8") as f:
@@ -73,15 +74,29 @@ class virketall:
                 for i in range(self.numberOfCategories):
                     currentRow = tableStartPoint + i
                     currentValue = self.ws[f"{column}{currentRow}"].value
-                    currentCategory = self.ws[f"{self.categoryNameColumn}{currentRow}"].value
-                    self.addValuesToList(headers=headers,currentValue=currentValue,currentCategory=currentCategory)
-    
-    def addValuesToList(self,headers,currentValue,currentCategory):
+                    currentCategory = self.ws[
+                        f"{self.categoryNameColumn}{currentRow}"
+                    ].value
+                    self.addValuesToList(
+                        headers=headers,
+                        currentValue=currentValue,
+                        currentCategory=currentCategory,
+                    )
+
+    def addValuesToList(self, headers, currentValue, currentCategory):
         tempLst = []
         [tempLst.append(header) for header in headers]
-        tempLst.append(currentValue)
         tempLst.append(currentCategory)
+        tempLst.append(currentValue)
         self.valuesList.append(tempLst)
+
+    def writeToCSV(self):
+        with open(self.config.get("outputFile"), "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(self.config.get("headings"))
+            for row in self.valuesList:
+                writer.writerow(row)
+        print("CSV file created successfully!")
 
 
 if __name__ == "__main__":

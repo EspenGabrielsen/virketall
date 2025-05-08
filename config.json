@@ -14,5 +14,14 @@
         -3,
         -2,
         -1
-    ],"sheetName":"Ark1"
+    ],
+    "sheetName": "Ark1",
+    "outputFile": "New_VirkeRapport.csv",
+    "headings": [
+        "Overskrift1",
+        "Overskrift2",
+        "Overskrift3",
+        "Kategori",
+        "Value"
+    ]
 }
