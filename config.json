@@ -1,0 +1,18 @@
+{
+    "startrow": [
+        6,
+        30
+    ],
+    "columns": [
+        "C",
+        "F",
+        "G"
+    ],
+    "numberOfCategories": 20,
+    "categoryNameColumn": "B",
+    "headingsOffsetFromStartRow": [
+        -3,
+        -2,
+        -1
+    ],"sheetName":"Ark1"
+}
