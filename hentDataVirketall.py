@@ -1,11 +1,12 @@
 import openpyxl
 import csv
 from tkinter import filedialog as filedialog
-from tkinter.messagebox import showwarning
+from tkinter.messagebox import showwarning, showinfo
 import json
 
 
 class virketall:
+    showinfo("Virketall","Husk å legge kopiere verdiene slik at formelene ikke er med i excel filen\nog husk å split merge headinger")
     def __init__(self):
         self.wb = None
         self.ws = None
@@ -91,7 +92,7 @@ class virketall:
         self.valuesList.append(tempLst)
 
     def writeToCSV(self):
-        with open(self.config.get("outputFile"), "w", newline="") as f:
+        with open(self.config.get("outputFile"), "w", newline="",encoding="UTF8") as f:
             writer = csv.writer(f)
             writer.writerow(self.config.get("headings"))
             for row in self.valuesList:

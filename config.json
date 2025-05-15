@@ -1,21 +1,26 @@
 {
     "startrow": [
-        6,
-        30
+        10,
+        69
     ],
     "columns": [
         "C",
+        "D",
+        "E",
         "F",
-        "G"
+        "I",
+        "J",
+        "K",
+        "L"
     ],
-    "numberOfCategories": 20,
+    "numberOfCategories": 49,
     "categoryNameColumn": "B",
     "headingsOffsetFromStartRow": [
         -3,
         -2,
         -1
     ],
-    "sheetName": "Ark1",
+    "sheetName": "SUM alle aktører",
     "outputFile": "New_VirkeRapport.csv",
     "headings": [
         "Overskrift1",
