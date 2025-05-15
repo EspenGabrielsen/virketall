@@ -92,7 +92,15 @@ class virketall:
         self.valuesList.append(tempLst)
 
     def writeToCSV(self):
-        with open(self.config.get("outputFile"), "w", newline="",encoding="UTF8") as f:
+        filename = filedialog.asksaveasfilename(
+            defaultextension=".csv",)
+        if not filename:
+            showwarning(
+                title="No file choosen",
+                message="Please choose a file to save the data to",
+            )
+            return
+        with open(filename, "w", newline="",encoding="UTF8") as f:
             writer = csv.writer(f)
             writer.writerow(self.config.get("headings"))
             for row in self.valuesList:
