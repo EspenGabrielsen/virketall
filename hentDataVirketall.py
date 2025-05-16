@@ -66,14 +66,14 @@ class virketall:
 
     def getValues(self):
         self.valuesList = []
-        for tableStartPoint in self.startRow:
+        for table in self.tablesToRead:
             for column in self.columns:
                 headers = [
-                    self.ws[f"{column}{tableStartPoint+ headerNr}"].value
+                    self.ws[f"{column}{table.get("startRow")+ headerNr}"].value
                     for headerNr in self.headingsOffsetFromStartRow
                 ]
                 for i in range(self.numberOfCategories):
-                    currentRow = tableStartPoint + i
+                    currentRow = table.get("startRow") + i
                     currentValue = self.ws[f"{column}{currentRow}"].value
                     currentCategory = self.ws[
                         f"{self.categoryNameColumn}{currentRow}"
@@ -82,11 +82,13 @@ class virketall:
                         headers=headers,
                         currentValue=currentValue,
                         currentCategory=currentCategory,
+                        actor=table.get("tableName"),
                     )
 
-    def addValuesToList(self, headers, currentValue, currentCategory):
+    def addValuesToList(self, actor,headers, currentValue, currentCategory):
         tempLst = []
         [tempLst.append(header) for header in headers]
+        tempLst.append(actor)
         tempLst.append(currentCategory)
         tempLst.append(currentValue)
         self.valuesList.append(tempLst)

@@ -1,7 +1,9 @@
 {
-    "startrow": [
-        10,
-        69
+    "tablesToRead": [
+        {"starRow":10,
+        "tableName": "Alle"},
+        {"starRow":69,
+        "tableName": "Optimera"}
     ],
     "columns": [
         "C",
@@ -26,6 +28,7 @@
         "Overskrift1",
         "Overskrift2",
         "Overskrift3",
+        "Kildenavn",
         "Kategori",
         "Value"
     ]
