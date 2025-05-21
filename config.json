@@ -1,9 +1,13 @@
 {
     "tablesToRead": [
-        {"starRow":10,
-        "tableName": "Alle"},
-        {"starRow":69,
-        "tableName": "Optimera"}
+        {
+            "startRow": 10,
+            "tableName": "Alle"
+        },
+        {
+            "startRow": 69,
+            "tableName": "Optimera"
+        }
     ],
     "columns": [
         "C",

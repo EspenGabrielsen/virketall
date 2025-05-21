@@ -18,6 +18,7 @@ class virketall:
             self.getFileByname()
         if self.choosenFile:
             self.readExcel()
+            self.tablesToRead = self.config.get("tablesToRead") or None
             self.startRow = self.config.get("startrow") or None
             self.columns = self.config.get("columns") or None
             self.numberOfCategories = self.config.get("numberOfCategories") or None
@@ -69,7 +70,7 @@ class virketall:
         for table in self.tablesToRead:
             for column in self.columns:
                 headers = [
-                    self.ws[f"{column}{table.get("startRow")+ headerNr}"].value
+                    self.ws[f"{column}{table.get("startRow") + headerNr}"].value
                     for headerNr in self.headingsOffsetFromStartRow
                 ]
                 for i in range(self.numberOfCategories):
@@ -85,7 +86,7 @@ class virketall:
                         actor=table.get("tableName"),
                     )
 
-    def addValuesToList(self, actor,headers, currentValue, currentCategory):
+    def addValuesToList(self, actor, headers, currentValue, currentCategory):
         tempLst = []
         [tempLst.append(header) for header in headers]
         tempLst.append(actor)
